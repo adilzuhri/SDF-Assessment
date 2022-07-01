@@ -9,17 +9,17 @@ import java.net.Socket;
 
 public class NetworkIO {
 
-    private InputStream is;
-    private DataInputStream dis;
     private OutputStream os;
     private DataOutputStream dos;
+    private InputStream is;
+    private DataInputStream dis;
 
     public NetworkIO(Socket sock) throws IOException {
-        is = sock.getInputStream();
-        dis = new DataInputStream(is);
         os = sock.getOutputStream();
         dos = new DataOutputStream(os);
-    }
+        is = sock.getInputStream();
+        dis = new DataInputStream(is);
+    }   
 
     public String read() throws IOException {
         return dis.readUTF();
@@ -38,7 +38,7 @@ public class NetworkIO {
             os.close();
         } 
         catch (IOException ex) {
-            
+
         }
     }
     
