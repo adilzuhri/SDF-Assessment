@@ -1,4 +1,4 @@
-package task02;
+package com.clientserver;
 
 import static org.junit.Assert.assertTrue;
 
