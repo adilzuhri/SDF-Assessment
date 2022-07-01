@@ -96,7 +96,6 @@ while(it.hasNext()) {
                 for(int cellNum = start;cellNum <= end;cellNum++) {
                     Cell cell = row.getCell(cellNum);
                     if(cell == null) {
-                        // add null to the headers if there are columns without title in the sheet
                         headers.add(null);
                         log.info("Had empty header for column " + CellReference.convertNumToColString(cellNum));
                     } else {
