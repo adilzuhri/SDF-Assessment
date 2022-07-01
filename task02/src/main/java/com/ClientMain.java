@@ -2,6 +2,8 @@ package com;
 
 import java.io.Console;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientMain {
@@ -21,10 +23,20 @@ public class ClientMain {
         Socket sock = new Socket(host, port);
         System.out.println("Connected!");
 
+        public static void main(String[] args) throws IOException {
+            Socket s = new Socket("localhost", 80);
+            ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+
+        }
+
         NetworkIO netIO = new NetworkIO(sock);
         Console cons = System.console();
         String req = "";
         String resp = "";
+        String response = read();
+        System.out.println(response);
+        
 
         while (!req.equals("exit")) {
             req = cons.readLine("> ");
@@ -35,14 +47,33 @@ public class ClientMain {
 
         }
 
+        private String read[()] throws IOException {
+            return ois.readUTF();
+
+        }
+
+        private void write(String out) throws IOException {
+            oos.writeUTF(out);
+            oos.flush();
+        }
+
+        private void close() throws IOException {
+            is.close();
+            os.close();
+
+        }
         netIO.close();
         sock.close();
 
-        System.out.println("Session Terminating")
+        System.out.println("Failed");
 
     
 
         }
+
+    private static String read() {
+        return null;
+    }
 
 }
 
